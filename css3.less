@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+.backface-visibility (@visibility) {
+	-webkit-backface-visibility: @visibility;
+	-moz-backface-visibility: @visibility;
+	backface-visibility: @visibility;
+}
+.background-linear-gradient-base (@direction,@start,@end) when (@direction = top) {
+	background: -webkit-gradient(linear, left top, right top, from(@start), to(@end));
+}
+.background-linear-gradient-base (@direction,@start,@end) when (@direction = left) {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@start), to(@end));
+}
+//线性渐变
+.background-gradient (@direction,@start,@end) when (@direction = left),(@direction = top) {
+	.background-linear-gradient-base(@direction,@start,@end); //老式写法
+	background: -webkit-linear-gradient(top, @start, @end); //新写法
+	background: -moz-linear-gradient(top, @start, @end);
+	background: -o-linear-gradient(top, @start, @end);
+	background: -ms-linear-gradient(top, @start, @end);
+	background: linear-gradient(top, @start, @end);
+	background-color: @end;
+}
+//圆形-径向渐变
+.background-gradient (@direction,@start,@end) when (@direction = radial) {
+	//background: -webkit-gradient(radial, center center, 0, center center, 460, from(@start), to(@end));
+	background: -webkit-radial-gradient(circle, @start, @end);
+	background: -moz-radial-gradient(circle, @start, @end);
+	background: -o-radial-gradient(circle, @start, @end);
+	background: -ms-radial-gradient(circle, @start, @end);
+	background: radial-gradient(circle, @start, @end);
+	background-color: @end;
+}
+.border-radius (...) {
+	-webkit-border-radius: @arguments;
+	-moz-border-radius: @arguments;
+	border-radius: @arguments;
+}
+//投影，X轴偏移量 Y轴偏移量 阴影模糊半径 阴影颜色
+.box-shadow (@x,@y,@blur,@color){
+	-webkit-box-shadow: @x @y @blur @color;
+	-moz-box-shadow: @x @y @blur @color;
+	box-shadow: @x @y @blur @color;
+}
+.box-shadow (@x,@y,@blur,@color,@inset){
+	-webkit-box-shadow: inset @x @y @blur @color;
+	-moz-box-shadow: inset @x @y @blur @color;
+	box-shadow: inset @x @y @blur @color;
+}
+//content-box,border-box,inherit
+.box-sizing (@style) {
+	-webkit-box-sizing: @style;
+	-moz-box-sizing: @style;
+	box-sizing: @style;
+}
+.column-count (@num) {
+	-webkit-column-count: @num;
+	-moz-column-count: @num;
+	-o-column-count: @num;
+	-ms-column-count: @num;
+	column-count: @num;
+}
+.column-gap (@gap) {
+	-webkit-column-gap: @gap;
+	-moz-column-gap: @gap;
+	-o-column-gap: @gap;
+	-ms-column-gap: @gap;
+	column-gap: @gap;
+}
+.opacity (@opacity) {
+	@ie: (@opacity * 100);
+	filter: alpha(opacity=@ie);
+	opacity: @opacity;
+}
+.perspective (@size){
+	-webkit-perspective: @size;
+	-moz-perspective: @size;
+	-o-perspective: @size;
+	-ms-perspective: @size;
+	perspective: @size;
+}
+.perspective-origin (@x,@y){
+	-webkit-perspective-origin: @x, @y;
+	-moz-perspective-origin: @x, @y;
+	-o-perspective-origin: @x, @y;
+	-ms-perspective-origin: @x, @y;
+	perspective-origin: @x, @y;
+}
+.text-shadow (@x,@y,@blur,@color){
+	text-shadow: @x @y @blur @color;
+}
+.transform (...) {
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-o-transform: @arguments;
+	-ms-transform: @arguments;
+	transform: @arguments;
+}
+.transform-perspective (@size) {
+	.transform(perspective(@size));
+}
+.transform-rotate (@degrees) {
+	.transform(rotate(@degrees));
+}
+.transform-rotate3d (@x,@y,@z) {
+	.transform(rotateX(@x) rotateY(@y) rotateZ(@z));
+}
+.transform-scale (@size) {
+	.transform(scale(@size));
+}
+.transform-scale3d (@x,@y,@z) {
+	.transform(scale3d(@x,@y,@z));
+}
+.transform-skew (@x,@y) {
+	.transform(skew(@x,@y));
+}
+.transform-translate (@x,@y) {
+	.transform(translate(@x,@y));
+}
+.transform-translate3d (@x,@y,@z) {
+	.transform(translate3d(@x,@y,@z));
+}
+.transform-origin (@x,@y) {
+	-webkit-transform-origin: @x @y;
+	-moz-transform-origin: @x @y;
+	-o-transform-origin: @x @y;
+	-ms-transform-origin: @x @y;
+	transform-origin: @x @y;
+}
+//@style = flat,preserve-3d
+.transform-style (@style) {
+	-webkit-transform-style: @style;
+	-moz-transform-style: @style;
+	-o-transform-style: @style;
+	-ms-transform-style: @style;
+	transform-style: @style;
+}
+.transition(...){
+	-webkit-transition: @arguments;
+	-moz-transition: @arguments;
+	-o-transition: @arguments;
+	transition: @arguments;
+}
